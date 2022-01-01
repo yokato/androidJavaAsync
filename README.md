@@ -8,7 +8,7 @@ Android 11でAsyncTaskがdeprecatedになったので、Javaで非同期処理�
 
 　　※Androidのバックグラウンドを使いこなす Thread, Looper, Handler https://academy.realm.io/jp/posts/android-thread-looper-handler/
   
-  　※<a href="https://tips.priart.net/52/">Android 11(Android-R) で AsyncTask がDeprecatedに - Tips</a> によるとJavaなら以下の選択肢がある
+　　※<a href="https://tips.priart.net/52/">Android 11(Android-R) で AsyncTask がDeprecatedに - Tips</a> によると、UIの更新は、Javaなら以下の選択肢がある
    
       - Handlerを使う
       - LiveDataを使う
