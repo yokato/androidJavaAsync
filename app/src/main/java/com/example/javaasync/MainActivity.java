@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 //        asyncExecute(2);
         asyncExecute(3);
 
-        //region4.MVVMアーキテクチャ
+        //region4.MVVMアーキテクチャ(Data Binding 不使用時)
         model.title.observe(this, title -> {
             TextView tv = (TextView)findViewById(R.id.book_title);
             tv.setText(getString(R.string.book_title, title));
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             model.fetchBookDetail();
         }
-        //endregion 4.MVVMアーキテクチャ
+        //endregion 4.MVVMアーキテクチャ(Data Binding 不使用時)
     }
 
     @UiThread
