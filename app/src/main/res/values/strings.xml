@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">javaAsync</string>
+    <string name="book_title">Book Title = %1$s</string>
+    <string name="book_amount">Book Amount = %1$s</string>
 </resources>

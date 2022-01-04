@@ -52,6 +52,22 @@ public class MainActivity extends AppCompatActivity {
 //        asyncExecute(1);
 //        asyncExecute(2);
         asyncExecute(3);
+
+        //region4.MVVMアーキテクチャ
+        model.title.observe(this, title -> {
+            TextView tv = (TextView)findViewById(R.id.book_title);
+            tv.setText(getString(R.string.book_title, title));
+        });
+
+        model.amount.observe(this, amount -> {
+            TextView tv = (TextView)findViewById(R.id.book_amount);
+            tv.setText(getString(R.string.book_amount, amount));
+        });
+
+        if (savedInstanceState == null) {
+            model.fetchBookDetail();
+        }
+        //endregion 4.MVVMアーキテクチャ
     }
 
     @UiThread
