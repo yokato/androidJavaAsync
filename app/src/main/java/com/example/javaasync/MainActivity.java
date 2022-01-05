@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         //region Data Binding 使用時
         // ViewModelをデータバインディングにセットする
         binding.setViewModel(model);
+        model.fetchBookDetail();
         //endregion Data Binding 使用時
 
         //region4.MVVMアーキテクチャ(Data Binding 不使用時)

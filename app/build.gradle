@@ -3,9 +3,6 @@ plugins {
 }
 
 android {
-    buildFeatures {
-        dataBinding = true
-    }
     compileSdk 32
 
     defaultConfig {
@@ -28,6 +25,15 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    //Gradle Plugin 4.0 以降の書き方
+    buildFeatures {
+        dataBinding = true
+    }
+    //Gradle Plugin 4.0 未満の書き方（4.0以降でもこの書き方でもOK）
+//    dataBinding {
+//        enabled = true
+//    }
 }
 
 dependencies {
