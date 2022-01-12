@@ -9,6 +9,11 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.animation.IntEvaluator;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -28,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
     //2.LiveData用モデルの作成(変数定義)
     private MyViewModel model;
-
+    BroadcastReceiver br;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,5 +70,26 @@ public class MainActivity extends AppCompatActivity {
 //            model.fetchBookDetail();
 //        }
         //endregion 4.MVVMアーキテクチャ(Data Binding 不使用時)
+
+        br = new MyBroadcastReceiver();
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        filter.addAction(Intent.ACTION_AIRPLANE_MODE_CHANGED);
+        this.registerReceiver(br, filter);
+    }
+
+    @Override
+    protected void onDestroy() {
+        Log.d(TAG, "onDestroy() called");
+        super.onDestroy();
+        unregisterReceiver(br);
+    }
+    class MyBroadcastReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            boolean state = intent.getBooleanExtra("state", false);
+            Log.d(TAG, "onReceive() called with: context = [" + context + "], intent = ["
+                    + intent + "], state = " + state);
+        }
     }
 }
